@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/farrelll241/AndroidStudioProjects/HomeworkPlanner/app/src/main/res/drawable/ic_bookvector.xml" value="0.166" />
         <entry key="..\:/Users/farrelll241/AndroidStudioProjects/HomeworkPlanner/app/src/main/res/layout/activity_main.xml" value="0.26875" />
+        <entry key="..\:/Users/farrelll241/AndroidStudioProjects/HomeworkPlanner/app/src/main/res/layout/fragment_action.xml" value="0.26875" />
         <entry key="..\:/Users/farrelll241/AndroidStudioProjects/HomeworkPlanner/app/src/main/res/layout/fragment_main.xml" value="0.26875" />
       </map>
     </option>
