@@ -7,6 +7,8 @@
     android:paddingLeft="20dp"
     android:paddingTop="40dp"
     android:paddingRight="20dp"
+    android:background="@color/darkGreen"
+
     tools:context=".ActionFragment">
 
     <TextView
@@ -14,9 +16,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
         android:text="View Assignment"
         android:textAlignment="center"
+
+        android:textColor="@color/white"
         android:textSize="40sp"
+        app:fontFamily="@font/amaranth"
         app:layout_constraintEnd_toStartOf="@+id/viewButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addAssignmentText" />
@@ -26,9 +32,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp"
         android:text="Add Assignment"
+
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="40sp"
+        app:fontFamily="@font/amaranth"
         app:layout_constraintEnd_toStartOf="@+id/addButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headingText" />
@@ -39,8 +49,10 @@
         android:layout_height="wrap_content"
         android:text="Choose to add or view assignments"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"
+        app:fontFamily="@font/adamina"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -64,5 +76,18 @@
         android:src="@drawable/ic_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addButton" />
+
+    <Button
+        android:id="@+id/returnButton"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:text="Return"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/gold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addAssignmentText2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
