@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import com.example.homeworkplanner.databinding.FragmentActionBinding
 import com.example.homeworkplanner.databinding.FragmentChooseBinding
 import com.google.firebase.database.DatabaseReference
@@ -16,6 +18,8 @@ class ChooseFragment : Fragment() {
     lateinit var dbRef: DatabaseReference
     private var _binding: FragmentChooseBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: PlanningViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,6 +28,18 @@ class ChooseFragment : Fragment() {
         _binding = FragmentChooseBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
+        binding.returnButton2.setOnClickListener {
+            rootView.findNavController().navigateUp()
+        }
+        binding.essayText.setOnClickListener{
+            viewModel.workType = "Essay"
+        }
+        binding.projectText.setOnClickListener{
+            viewModel.workType = "Project"
+        }
+        binding.homeworkText.setOnClickListener{
+            viewModel.workType = "Homework"
+        }
         return rootView
     }
 

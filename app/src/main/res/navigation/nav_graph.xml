@@ -35,5 +35,18 @@
         android:id="@+id/chooseFragment"
         android:name="com.example.homeworkplanner.ChooseFragment"
         android:label="fragment_choose"
-        tools:layout="@layout/fragment_choose" />
+        tools:layout="@layout/fragment_choose" >
+        <action
+            android:id="@+id/action_chooseFragment_to_createFragment"
+            app:destination="@id/createFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.example.homeworkplanner.CreateFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create" >
+        <action
+            android:id="@+id/action_createFragment_to_actionFragment"
+            app:destination="@id/actionFragment" />
+    </fragment>
 </navigation>

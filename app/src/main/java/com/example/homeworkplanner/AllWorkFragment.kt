@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.example.homeworkplanner.databinding.FragmentAllWorkBinding
 import com.example.homeworkplanner.databinding.FragmentChooseBinding
 import com.google.firebase.database.DatabaseReference
@@ -16,6 +17,7 @@ class AllWorkFragment : Fragment() {
     lateinit var dbRef: DatabaseReference
     private var _binding: FragmentAllWorkBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: PlanningViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
