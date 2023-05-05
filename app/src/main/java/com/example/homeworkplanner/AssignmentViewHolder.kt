@@ -1,5 +1,6 @@
 package com.example.homeworkplanner
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homeworkplanner.databinding.ListItemLayoutBinding
 
@@ -9,7 +10,15 @@ class AssignmentViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.Vi
 
     fun bindAssignment(assignment: Assignment){
     currentAssignment = assignment
-        // fill out fields in list item layout
+        binding.imageView.setVisibility(View.INVISIBLE)
+        binding.dueDateText.text= currentAssignment.date
+        binding.typeText.text = currentAssignment.type
     }
+//    init{
+//        binding.root.setOnClickListener {
+//            binding.root.findNavController()
+//                .navigate(R.id.action_mainFragment_to_prankSnapFragment)
+//        }
+//    } navigate to the details fragment
 
 }
