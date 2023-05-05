@@ -25,8 +25,9 @@ class AllWorkFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentAllWorkBinding.inflate(inflater, container, false)
         val rootView = binding.root
-//        val mAdapter = AssignmentAdapter(assignments)
-//        binding.recyclerView.adapter = mAdapter
+        val assignments= listOf(Assignment("Essay", "Research", "March 1st", "final paper", "English", 100, "2 hours"))
+        val mAdapter = AssignmentAdapter(assignments)
+        binding.recyclerView.adapter = mAdapter
         return rootView
     }
 
