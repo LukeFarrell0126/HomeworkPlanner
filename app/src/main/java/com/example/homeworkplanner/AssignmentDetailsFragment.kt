@@ -7,35 +7,32 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.example.homeworkplanner.databinding.FragmentAllWorkBinding
-import com.example.homeworkplanner.databinding.FragmentChooseBinding
+import com.example.homeworkplanner.databinding.FragmentAssignmentDetailsBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-
-class AllWorkFragment : Fragment() {
-    lateinit var dbRef: DatabaseReference
-    private var _binding: FragmentAllWorkBinding? = null
+class AssignmentDetailsFragment : Fragment() {
+    private var _binding: FragmentAssignmentDetailsBinding? = null
     private val binding get() = _binding!!
+    lateinit var dbRef: DatabaseReference
     private val viewModel: PlanningViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         dbRef = Firebase.database.reference //in view model or every fragment
-        _binding = FragmentAllWorkBinding.inflate(inflater, container, false)
+        _binding = FragmentAssignmentDetailsBinding.inflate(inflater, container, false)
         val rootView = binding.root
-        val assignments= listOf(Assignment("Essay", "Research", "March 1st",
-            "final paper", "English", 100, "2 hours", false))
 
-        val mAdapter = AssignmentAdapter(assignments)
-        binding.recyclerView.adapter = mAdapter
-        binding.returnButton4.setOnClickListener {
+        binding.completeButton.setOnClickListener {
+            rootView.findNavController().navigateUp()
+        }
+        binding.returnButton5.setOnClickListener {
             rootView.findNavController().navigateUp()
         }
         return rootView
     }
-
 
 }

@@ -8,7 +8,7 @@
     android:paddingTop="40dp"
     android:background="@color/darkGreen"
     android:paddingRight="20dp"
-    android:paddingBottom="60dp"
+    android:paddingBottom="50dp"
     tools:context=".CreateFragment">
 
     <Button
@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Return"
-        android:textSize="25sp"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:backgroundTint="@color/gold"
         app:fontFamily="@font/adamina"

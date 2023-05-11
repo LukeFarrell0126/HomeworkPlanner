@@ -30,7 +30,11 @@
         android:id="@+id/allWorkFragment"
         android:name="com.example.homeworkplanner.AllWorkFragment"
         android:label="fragment_all_work"
-        tools:layout="@layout/fragment_all_work" />
+        tools:layout="@layout/fragment_all_work" >
+        <action
+            android:id="@+id/action_allWorkFragment_to_assignmentDetailsFragment"
+            app:destination="@id/assignmentDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chooseFragment"
         android:name="com.example.homeworkplanner.ChooseFragment"
@@ -49,4 +53,9 @@
             android:id="@+id/action_createFragment_to_actionFragment"
             app:destination="@id/actionFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/assignmentDetailsFragment"
+        android:name="com.example.homeworkplanner.AssignmentDetailsFragment"
+        android:label="fragment_assignment_details"
+        tools:layout="@layout/fragment_assignment_details" />
 </navigation>

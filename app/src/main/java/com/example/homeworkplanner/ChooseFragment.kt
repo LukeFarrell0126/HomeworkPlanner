@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.example.homeworkplanner.databinding.FragmentActionBinding
 import com.example.homeworkplanner.databinding.FragmentChooseBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -31,13 +30,13 @@ class ChooseFragment : Fragment() {
         binding.returnButton2.setOnClickListener {
             rootView.findNavController().navigateUp()
         }
-        binding.essayText.setOnClickListener{
+        binding.essayImage.setOnClickListener{
             viewModel.workType = "Essay"
         }
-        binding.projectText.setOnClickListener{
+        binding.projectImage.setOnClickListener{
             viewModel.workType = "Project"
         }
-        binding.homeworkText.setOnClickListener{
+        binding.homeworkImage.setOnClickListener{
             viewModel.workType = "Homework"
         }
         return rootView

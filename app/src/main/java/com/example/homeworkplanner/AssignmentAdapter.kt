@@ -12,12 +12,10 @@ class AssignmentAdapter(val assignmentList: List<Assignment>): RecyclerView.Adap
         val binding = ListItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AssignmentViewHolder(binding)
     }
-
     override fun onBindViewHolder(holder: AssignmentViewHolder, position: Int) {
-        val currentSnap = assignmentList[position]
-        holder.bindAssignment(currentSnap)
+        val currentAssignment = assignmentList[position]
+        holder.bindAssignment(currentAssignment)
     }
-
     override fun getItemCount(): Int {
         return assignmentList.size
     }

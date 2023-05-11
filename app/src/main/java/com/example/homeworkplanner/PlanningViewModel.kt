@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class PlanningViewModel: ViewModel() {
     var list = mutableListOf(
-       Assignment("Essay", "Research", "March 1st", "final paper", "English", 100, "2 hours")
+       Assignment("Essay", "Research", "March 1st", "final paper", "English", 100, "2 hours", false)
     )
 
     private var _index = 0
@@ -44,7 +44,16 @@ class PlanningViewModel: ViewModel() {
 
     fun addAssignment(type: String, name: String, date: String, desc: String, subject: String,
                       points: Int, time: String){
-        list.add(Assignment(type,name,date,desc,subject,points,time))
+        list.add(Assignment(type,name,date,desc,subject,points,time, false))
+    }
+    fun removeAssignments(){
+        for(work in list)
+            if(work.completed)
+                list.remove(work)
+    }
+    fun checkIfLate(){
+        //call in viewholder to set the status text view
+        //get current date to set late, due today, not yet due
     }
 
 }
