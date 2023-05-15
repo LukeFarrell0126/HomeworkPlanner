@@ -14,7 +14,7 @@ class PlanningViewModel: ViewModel() {
         get() = _index
 
     val name: String
-        get() = list.get(index ?: 0).type
+        get() = list.get(index ?: 0).name
 
     val date: String
         get() = list.get(index ?: 0).date
@@ -37,10 +37,11 @@ class PlanningViewModel: ViewModel() {
 
     private var _workType = ""
     var workType: String = ""
-        get() = _workType //observe this property
+        get() = list.get(index?: 0).type //observe this property
 
     val numOfAssignments: Int
         get() = list.size
+
 
     fun addAssignment(type: String, name: String, date: String, desc: String, subject: String,
                       points: Int, time: String){
@@ -54,6 +55,9 @@ class PlanningViewModel: ViewModel() {
     fun checkIfLate(){
         //call in viewholder to set the status text view
         //get current date to set late, due today, not yet due
+    }
+    fun completeAssignment(){
+        _isCompleted.value=true
     }
 
 }

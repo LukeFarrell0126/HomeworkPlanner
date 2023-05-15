@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.homeworkplanner.databinding.FragmentAssignmentDetailsBinding
+import com.example.homeworkplanner.databinding.ListItemLayoutBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -17,7 +18,6 @@ class AssignmentDetailsFragment : Fragment() {
     private val binding get() = _binding!!
     lateinit var dbRef: DatabaseReference
     private val viewModel: PlanningViewModel by activityViewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,11 +27,20 @@ class AssignmentDetailsFragment : Fragment() {
         val rootView = binding.root
 
         binding.completeButton.setOnClickListener {
+            viewModel.completeAssignment()
             rootView.findNavController().navigateUp()
         }
         binding.returnButton5.setOnClickListener {
             rootView.findNavController().navigateUp()
         }
+        binding.detailTypeText.text=viewModel.workType
+        binding.detailDateText.text=""
+        binding.detailDescText.text=""
+        binding.detailClassText.text=""
+        binding.detailPointText.text=""
+        binding.detailPointText.text=""
+
+
         return rootView
     }
 
