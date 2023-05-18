@@ -39,6 +39,21 @@ class ChooseFragment : Fragment() {
         binding.homeworkImage.setOnClickListener{
             viewModel.workType = "Homework"
         }
+        binding.essayImage.setOnClickListener{
+            viewModel.workType="Essay"
+            val action =ChooseFragmentDirections.actionChooseFragmentToCreateFragment()
+            rootView.findNavController().navigate(action)
+        }
+        binding.projectImage.setOnClickListener{
+            viewModel.workType="Project"
+            val action =ChooseFragmentDirections.actionChooseFragmentToCreateFragment()
+            rootView.findNavController().navigate(action)
+        }
+        binding.homeworkImage.setOnClickListener{
+            viewModel.workType="Homework"
+            val action =ChooseFragmentDirections.actionChooseFragmentToCreateFragment()
+            rootView.findNavController().navigate(action)
+        }
         return rootView
     }
 

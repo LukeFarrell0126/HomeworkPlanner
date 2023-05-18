@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.homeworkplanner.databinding.FragmentAssignmentDetailsBinding
-import com.example.homeworkplanner.databinding.ListItemLayoutBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -28,18 +27,18 @@ class AssignmentDetailsFragment : Fragment() {
 
         binding.completeButton.setOnClickListener {
             viewModel.completeAssignment()
+            viewModel.removeAssignments()
             rootView.findNavController().navigateUp()
         }
         binding.returnButton5.setOnClickListener {
             rootView.findNavController().navigateUp()
         }
-        binding.detailTypeText.text=viewModel.workType
-        binding.detailDateText.text=""
-        binding.detailDescText.text=""
-        binding.detailClassText.text=""
-        binding.detailPointText.text=""
-        binding.detailPointText.text=""
-
+        binding.detailTypeText.text = viewModel.workType
+        binding.detailDateText.text = viewModel.date
+        binding.detailDescText.text = viewModel.desc
+        binding.detailClassText.text = viewModel.subject
+        binding.detailPointText.text = viewModel.points.toString() + "pts"
+        binding.detailNameText.text = viewModel.name
 
         return rootView
     }

@@ -52,7 +52,7 @@ class PlanningViewModel: ViewModel() {
             if(work.completed)
                 list.remove(work)
     }
-    fun checkIfLate(){
+    fun checkLate(){
         //call in viewholder to set the status text view
         //get current date to set late, due today, not yet due
     }
