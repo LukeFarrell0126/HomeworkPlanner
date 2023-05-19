@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.homeworkplanner.databinding.FragmentCreateBinding
-import com.example.homeworkplanner.databinding.FragmentMainBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -31,35 +30,35 @@ class CreateFragment : Fragment() {
         binding.returnButton3.setOnClickListener {
             rootView.findNavController().navigateUp()
         }
-        binding.finish.setOnClickListener {
-        if (binding.nameText.text.equals("") || binding.dateText.text.equals("") || binding.descText.text.equals(
-                ""
-            )
-            || binding.subjectText.text.equals("") || binding.pointsText.text.equals("") || binding.completeTimeText.text.equals(
-                ""
-            )
-        ) {
-            Toast.makeText(
-                activity,
-                "You must complete ALL fields before creating an assignment",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else {
-            binding.finish.setOnClickListener {
-                viewModel.addAssignment(
-                    "",
-                    binding.nameText.text.toString(),
-                    binding.dateText.text.toString(),
-                    binding.descText.text.toString(),
-                    binding.subjectText.text.toString(),
-                    binding.pointsText.text.toString().toInt(),
-                    binding.completeTimeText.text.toString()
-                )
+//        binding.nameText.text.equals("") || binding.dateText.text.equals("") || binding.descText.text.equals("")
+//                || binding.subjectText.text.equals("") || binding.pointsText.text.equals("")
+//                || binding.completeTimeText.text.equals("")
+            if (true) {
+                binding.finish.setOnClickListener {
+                Toast.makeText(
+                    activity,
+                    "You must complete ALL fields before creating an assignment",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            }
+            else {
+                binding.finish.setOnClickListener {
+                    viewModel.addAssignment(
+                       "",
+                        binding.nameText.text.toString(),
+                        binding.dateText.text.toString(),
+                        binding.descText.text.toString(),
+                        binding.subjectText.text.toString(),
+                        binding.pointsText.text.toString().toInt(),
+                        binding.completeTimeText.text.toString()
+                    )
+
                 val action = CreateFragmentDirections.actionCreateFragmentToActionFragment()
                 rootView.findNavController().navigate(action)
             }
-        }
-    }
+            }
+
 
         return rootView
     }

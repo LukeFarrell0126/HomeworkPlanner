@@ -11,6 +11,8 @@ class AssignmentViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.Vi
 
     fun bindAssignment(assignment: Assignment){
     currentAssignment = assignment
+        binding.imageView.setVisibility(View.INVISIBLE)
+
 //        if(viewModel.isCompleted.value == true) {
 //            binding.imageView.setVisibility(View.VISIBLE)
 //        }
