@@ -1,11 +1,13 @@
 package com.example.homeworkplanner
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.homeworkplanner.databinding.FragmentCreateBinding
@@ -18,6 +20,7 @@ class CreateFragment : Fragment() {
     private var _binding: FragmentCreateBinding? = null
     private val binding get() = _binding!!
     lateinit var dbRef: DatabaseReference
+
     private val viewModel: PlanningViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,8 +63,19 @@ class CreateFragment : Fragment() {
 
         }
         binding.imageView2.setOnClickListener {
-        
+            binding.finish.setVisibility(View.INVISIBLE)
+            binding.datePicker.setVisibility(View.VISIBLE)
+
         }
+//        val myCalender = Calender.getInstance()
+//        val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+//            myCalender.set(Calender.YEAR, year)
+//            myCalender.set(Calender.MONTH, month)
+//            myCalender.set(Calender.DAY_OF_MONTH, dayOfMonth)
+//            updateLable(myCalender)
+//        }
+
+
         return rootView
     }
 
