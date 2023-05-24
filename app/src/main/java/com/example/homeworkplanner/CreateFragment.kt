@@ -1,12 +1,14 @@
 package com.example.homeworkplanner
 
 import android.app.DatePickerDialog
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -22,6 +24,7 @@ class CreateFragment : Fragment() {
     lateinit var dbRef: DatabaseReference
 
     private val viewModel: PlanningViewModel by activityViewModels()
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,18 +67,13 @@ class CreateFragment : Fragment() {
         }
         binding.imageView2.setOnClickListener {
             binding.finish.setVisibility(View.INVISIBLE)
-            binding.datePicker.setVisibility(View.VISIBLE)
-
+//            binding.datePicker.setVisibility(View.VISIBLE)
         }
-//        val myCalender = Calender.getInstance()
-//        val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-//            myCalender.set(Calender.YEAR, year)
-//            myCalender.set(Calender.MONTH, month)
-//            myCalender.set(Calender.DAY_OF_MONTH, dayOfMonth)
-//            updateLable(myCalender)
-//        }
-
-
+//       binding.datePicker.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
+//           binding.dateText.text = binding.datePicker.dayOfMonth.toString()
+//           binding.finish.setVisibility(View.VISIBLE)
+//           binding.datePicker.setVisibility(View.INVISIBLE)
+//       }
         return rootView
     }
 
