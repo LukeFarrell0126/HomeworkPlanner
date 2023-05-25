@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.homeworkplanner.databinding.FragmentCreateBinding
@@ -22,8 +21,10 @@ class CreateFragment : Fragment() {
     private var _binding: FragmentCreateBinding? = null
     private val binding get() = _binding!!
     lateinit var dbRef: DatabaseReference
+    var i = 1
 
     private val viewModel: PlanningViewModel by activityViewModels()
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,14 +67,18 @@ class CreateFragment : Fragment() {
 
         }
         binding.imageView2.setOnClickListener {
-            binding.finish.setVisibility(View.INVISIBLE)
-//            binding.datePicker.setVisibility(View.VISIBLE)
+            if (i == 1) {
+                binding.datePicker.setVisibility(View.VISIBLE)
+                binding.finish.setVisibility(View.INVISIBLE)
+                i++
+            }
+            else {
+                binding.datePicker.setVisibility(View.INVISIBLE)
+                binding.finish.setVisibility(View.VISIBLE)
+                i--
+            }
         }
-//       binding.datePicker.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
-//           binding.dateText.text = binding.datePicker.dayOfMonth.toString()
-//           binding.finish.setVisibility(View.VISIBLE)
-//           binding.datePicker.setVisibility(View.INVISIBLE)
-//       }
+
         return rootView
     }
 
