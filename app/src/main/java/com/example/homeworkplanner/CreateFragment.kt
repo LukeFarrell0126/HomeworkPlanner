@@ -33,24 +33,21 @@ class CreateFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentCreateBinding.inflate(inflater, container, false)
         val rootView = binding.root
-
+        binding.datePicker.setVisibility(View.INVISIBLE)
         binding.returnButton3.setOnClickListener {
             rootView.findNavController().navigateUp()
         }
-
-        if (binding.nameText.text.toString() == ("") || binding.dateText.text.toString() == ("") || binding.descText.text.toString() == ("")
-            || binding.subjectText.text.toString() == ("") || binding.pointsText.text.toString() == ("")
-            || binding.completeTimeText.text.toString() == ("")
-        ) {
-            binding.finish.setOnClickListener {
+        binding.finish.setOnClickListener {
+            if (binding.nameText.text.toString().length == 0 || binding.dateText.text.toString().length == 0 || binding.descText.text.toString().length == 0
+                || binding.subjectText.text.toString().length == 0 || binding.pointsText.text.toString().length == 0
+                || binding.completeTimeText.text.toString().length == 0
+            ) {
                 Toast.makeText(
                     activity,
                     "You must complete ALL fields before creating an assignment",
                     Toast.LENGTH_SHORT
                 ).show()
-            }
-        } else {
-            binding.finish.setOnClickListener {
+            } else {
                 viewModel.addAssignment(
                     viewModel.workType,
                     binding.nameText.text.toString(),
@@ -60,26 +57,52 @@ class CreateFragment : Fragment() {
                     binding.pointsText.text.toString().toInt(),
                     binding.completeTimeText.text.toString()
                 )
-
                 val action = CreateFragmentDirections.actionCreateFragmentToActionFragment()
                 rootView.findNavController().navigate(action)
             }
-
         }
-        binding.imageView2.setOnClickListener {
-            if (i == 1) {
-                binding.datePicker.setVisibility(View.VISIBLE)
-                binding.finish.setVisibility(View.INVISIBLE)
-                i++
+//        if (binding.nameText.text.toString().length == 0 || binding.dateText.text.toString().length == 0 || binding.descText.text.toString().length == 0
+//            || binding.subjectText.text.toString().length == 0 || binding.pointsText.text.toString().length == 0
+//            || binding.completeTimeText.text.toString().length == 0) {
+//            binding.finish.setOnClickListener {
+//                Toast.makeText(
+//                    activity,
+//                    "You must complete ALL fields before creating an assignment",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//        }
+//        else {
+//            binding.finish.setOnClickListener {
+//                viewModel.addAssignment(
+//                    viewModel.workType,
+//                    binding.nameText.text.toString(),
+//                    binding.dateText.text.toString(),
+//                    binding.descText.text.toString(),
+//                    binding.subjectText.text.toString(),
+//                    binding.pointsText.text.toString().toInt(),
+//                    binding.completeTimeText.text.toString()
+//                )
+//                val action = CreateFragmentDirections.actionCreateFragmentToActionFragment()
+//                rootView.findNavController().navigate(action)
+//            }
+//
+//        }
+            binding.imageView2.setOnClickListener {
+                if (i == 1) {
+                    binding.datePicker.setVisibility(View.VISIBLE)
+                    binding.finish.setVisibility(View.INVISIBLE)
+                    i++
+                } else {
+                    binding.datePicker.setVisibility(View.INVISIBLE)
+                    binding.finish.setVisibility(View.VISIBLE)
+                    i--
+                    binding.dateText.text = (binding.datePicker.month + 1).toString() + "/" +
+                            binding.datePicker.dayOfMonth.toString() + "/" +
+                            binding.datePicker.year.toString()
+                }
             }
-            else {
-                binding.datePicker.setVisibility(View.INVISIBLE)
-                binding.finish.setVisibility(View.VISIBLE)
-                i--
-            }
+            return rootView
         }
 
-        return rootView
     }
-
-}
