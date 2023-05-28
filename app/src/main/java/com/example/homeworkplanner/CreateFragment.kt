@@ -49,7 +49,7 @@ class CreateFragment : Fragment() {
                 ).show()
             } else {
                 viewModel.addAssignment(
-                    viewModel.workType,
+                    "",
                     binding.nameText.text.toString(),
                     binding.dateText.text.toString(),
                     binding.descText.text.toString(),
@@ -61,33 +61,6 @@ class CreateFragment : Fragment() {
                 rootView.findNavController().navigate(action)
             }
         }
-//        if (binding.nameText.text.toString().length == 0 || binding.dateText.text.toString().length == 0 || binding.descText.text.toString().length == 0
-//            || binding.subjectText.text.toString().length == 0 || binding.pointsText.text.toString().length == 0
-//            || binding.completeTimeText.text.toString().length == 0) {
-//            binding.finish.setOnClickListener {
-//                Toast.makeText(
-//                    activity,
-//                    "You must complete ALL fields before creating an assignment",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//        }
-//        else {
-//            binding.finish.setOnClickListener {
-//                viewModel.addAssignment(
-//                    viewModel.workType,
-//                    binding.nameText.text.toString(),
-//                    binding.dateText.text.toString(),
-//                    binding.descText.text.toString(),
-//                    binding.subjectText.text.toString(),
-//                    binding.pointsText.text.toString().toInt(),
-//                    binding.completeTimeText.text.toString()
-//                )
-//                val action = CreateFragmentDirections.actionCreateFragmentToActionFragment()
-//                rootView.findNavController().navigate(action)
-//            }
-//
-//        }
             binding.imageView2.setOnClickListener {
                 if (i == 1) {
                     binding.datePicker.setVisibility(View.VISIBLE)
