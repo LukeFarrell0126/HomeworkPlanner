@@ -66,12 +66,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
         android:textColor="@color/white"
         android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/detailDescText2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailDescText2" />
+        app:layout_constraintStart_toEndOf="@+id/detailDescText2" />
 
     <TextView
         android:id="@+id/detailDescText2"

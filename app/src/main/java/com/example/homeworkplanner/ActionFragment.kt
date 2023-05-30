@@ -32,7 +32,8 @@ class ActionFragment : Fragment() {
             rootView.findNavController().navigate(action)
         }
         binding.returnButton.setOnClickListener {
-            rootView.findNavController().navigateUp()
+            val action = ActionFragmentDirections.actionActionFragmentToMainFragment()
+            rootView.findNavController().navigate(action)
         }
         return rootView
     }

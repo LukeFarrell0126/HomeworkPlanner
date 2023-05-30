@@ -55,7 +55,7 @@ class CreateFragment : Fragment() {
                     binding.descText.text.toString(),
                     binding.subjectText.text.toString(),
                     binding.pointsText.text.toString().toInt(),
-                    binding.completeTimeText.text.toString()
+                    binding.completeTimeText.text.toString().toDouble()
                 )
                 val action = CreateFragmentDirections.actionCreateFragmentToActionFragment()
                 rootView.findNavController().navigate(action)

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_actionFragment_to_chooseFragment"
             app:destination="@id/chooseFragment" />
+        <action
+            android:id="@+id/action_actionFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/allWorkFragment"
