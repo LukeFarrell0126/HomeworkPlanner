@@ -89,17 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subjectText" />
 
-    <EditText
-        android:id="@+id/completeTimeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Completion time"
-        android:inputType="time"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/descText"
-        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <Button
         android:id="@+id/finish"
@@ -149,6 +139,17 @@
         app:layout_constraintEnd_toStartOf="@+id/pointsText"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />
+
+    <EditText
+        android:id="@+id/completeTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Completion time (hours)"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/descText"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

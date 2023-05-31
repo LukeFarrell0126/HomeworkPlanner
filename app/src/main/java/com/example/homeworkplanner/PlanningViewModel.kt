@@ -60,7 +60,7 @@ class PlanningViewModel: ViewModel() {
     fun totalTime(): Double{
         var total = 0.0
         for(work in list){
-            total+=(work.time.toDouble())
+            total+=(work.time)
         }
         return total
     }

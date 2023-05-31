@@ -45,7 +45,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-
         android:layout_marginTop="30dp"
         android:text="You have about (blank) minutes of work to complete"
         android:textAlignment="center"
