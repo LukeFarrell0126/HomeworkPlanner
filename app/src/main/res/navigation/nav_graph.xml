@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_actionFragment"
             app:destination="@id/actionFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/actionFragment"
@@ -28,6 +31,9 @@
         <action
             android:id="@+id/action_actionFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_actionFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/allWorkFragment"
@@ -37,6 +43,9 @@
         <action
             android:id="@+id/action_allWorkFragment_to_assignmentDetailsFragment"
             app:destination="@id/assignmentDetailsFragment" />
+        <action
+            android:id="@+id/action_allWorkFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/chooseFragment"
@@ -46,6 +55,9 @@
         <action
             android:id="@+id/action_chooseFragment_to_createFragment"
             app:destination="@id/createFragment" />
+        <action
+            android:id="@+id/action_chooseFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/createFragment"
@@ -55,10 +67,22 @@
         <action
             android:id="@+id/action_createFragment_to_actionFragment"
             app:destination="@id/actionFragment" />
+        <action
+            android:id="@+id/action_createFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/assignmentDetailsFragment"
         android:name="com.example.homeworkplanner.AssignmentDetailsFragment"
         android:label="fragment_assignment_details"
-        tools:layout="@layout/fragment_assignment_details" />
+        tools:layout="@layout/fragment_assignment_details" >
+        <action
+            android:id="@+id/action_assignmentDetailsFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.homeworkplanner.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>

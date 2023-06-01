@@ -18,7 +18,6 @@
         android:text="Assignment Planning"
         android:textAlignment="center"
         android:textColor="@color/white"
-
         android:textSize="50sp"
         android:textStyle="bold"
         app:fontFamily="@font/adamina"

@@ -48,10 +48,9 @@ class PlanningViewModel: ViewModel() {
         index++
     }
     fun removeAssignments(){
-        for(work in list) {
-            if (work.completed)
+        for(work in list)
+            if(work.completed)
                 list.remove(work)
-        }
     }
     fun checkLate(){
         //call in viewholder to set the status text view
@@ -67,5 +66,4 @@ class PlanningViewModel: ViewModel() {
     fun completeAssignment(){
         _isCompleted.value=true
     }
-
 }

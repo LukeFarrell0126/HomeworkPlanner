@@ -1,17 +1,18 @@
 package com.example.homeworkplanner
 
 import android.app.DatePickerDialog
+import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.homeworkplanner.databinding.FragmentCreateBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -33,6 +34,8 @@ class CreateFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentCreateBinding.inflate(inflater, container, false)
         val rootView = binding.root
+//        viewModel.currentDate= Calendar.getInstance().getTime()
+        setHasOptionsMenu(true)
         binding.datePicker.setVisibility(View.INVISIBLE)
         binding.returnButton3.setOnClickListener {
             rootView.findNavController().navigateUp()
@@ -48,6 +51,11 @@ class CreateFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
+                Snackbar.make(
+                    binding.finish,
+                    "You have created a NEW assignment!!",
+                    Snackbar.LENGTH_SHORT
+                ).show()
                 viewModel.addAssignment(
                     "",
                     binding.nameText.text.toString(),
@@ -77,5 +85,12 @@ class CreateFragment : Fragment() {
             }
             return rootView
         }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController()) || super.onOptionsItemSelected(item)
+    }
 
     }

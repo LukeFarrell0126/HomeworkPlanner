@@ -2,12 +2,11 @@ package com.example.homeworkplanner
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.homeworkplanner.databinding.FragmentMainBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -29,8 +28,9 @@ class MainFragment : Fragment() {
         var hours = (viewModel.totalTime()/1).toInt()
         var minutes = ((viewModel.totalTime()%1)*60).toInt()
 //        binding.timeText.text="${minutes > 0.0}"
+        setHasOptionsMenu(true)
 
-        if(viewModel.numOfAssignments== 0 || minutes== 0) {
+        if(viewModel.numOfAssignments == 0 ||(minutes == 0 && hours == 0)) {
             binding.overviewText.text="You have no ongoing assignments"
             binding.timeText.text="You have about no work to complete"
         }
@@ -52,7 +52,7 @@ class MainFragment : Fragment() {
             else if(hours == 1) {
                 binding.timeText.text = "You have about ${hours} hour and"
                 if (minutes == 1)
-                    binding.timeText.text = " ${minutes} minute of work to complete"
+                    binding.timeText.text = binding.timeText.text.toString() +" ${minutes} minute of work to complete"
             }
         }
         binding.beginPlanningButton.setOnClickListener {
@@ -60,5 +60,13 @@ class MainFragment : Fragment() {
             rootView.findNavController().navigate(action)
         }
         return rootView
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 }
