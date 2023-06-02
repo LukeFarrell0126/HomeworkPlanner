@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.homeworkplanner.databinding.FragmentCreateBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -38,7 +39,20 @@ class CreateFragment : Fragment() {
         setHasOptionsMenu(true)
         binding.datePicker.setVisibility(View.INVISIBLE)
         binding.returnButton3.setOnClickListener {
-            rootView.findNavController().navigateUp()
+            if(binding.nameText.text.toString().length == 0 || binding.dateText.text.toString().length == 0 || binding.descText.text.toString().length == 0
+                || binding.subjectText.text.toString().length == 0 || binding.pointsText.text.toString().length == 0
+                || binding.completeTimeText.text.toString().length == 0){
+//                MaterialAlertDialogBuilder()
+//                    .setTitle("Confirmation")
+//                    .setPositiveButton("Confirm") { dialog, which ->
+//                        rootView.findNavController().navigateUp()
+//                    }
+//                    .setNegativeButton("Dismiss") { dialog, which ->
+//                        // Do something for button click
+//                    }
+//                    .show()
+            }
+
         }
         binding.finish.setOnClickListener {
             if (binding.nameText.text.toString().length == 0 || binding.dateText.text.toString().length == 0 || binding.descText.text.toString().length == 0

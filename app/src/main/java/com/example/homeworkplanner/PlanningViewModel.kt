@@ -7,10 +7,10 @@ import androidx.lifecycle.ViewModel
 class PlanningViewModel: ViewModel() {
     var list = mutableListOf(
        Assignment("Essay", "Research", "March 1st", "final paper", "English", 100,
-           2.0, false, 0)
+           2.0, true, 0)
     )
-    private var _index = 1
-    var index: Int =1 //loop index
+    private var _index = 0
+    var index: Int =0 //loop index
         get() = _index
 
     val name: String
@@ -64,6 +64,13 @@ class PlanningViewModel: ViewModel() {
         return total
     }
     fun completeAssignment(){
-        _isCompleted.value=true
+        list.get(index?: 0).completed=true
+    }
+    fun updateIndex(){
+        var n=0
+        for(work in list){
+            work.index=n
+            n++
+        }
     }
 }

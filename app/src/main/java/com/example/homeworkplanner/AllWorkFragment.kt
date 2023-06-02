@@ -27,7 +27,12 @@ class AllWorkFragment : Fragment() {
         val rootView = binding.root
         setHasOptionsMenu(true)
         val assignments= viewModel.list
-
+        viewModel.isCompleted.observe(viewLifecycleOwner){true
+        viewModel.removeAssignments()
+//            viewModel.index=viewModel.list.size-1 //makes adding index correct
+            viewModel.updateIndex()
+            binding.textView4.text="${viewModel.index}"
+}
         val mAdapter = AssignmentAdapter(assignments)
         binding.recyclerView.adapter = mAdapter
         binding.returnButton4.setOnClickListener {

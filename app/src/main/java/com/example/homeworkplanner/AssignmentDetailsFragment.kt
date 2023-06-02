@@ -26,7 +26,6 @@ class AssignmentDetailsFragment : Fragment() {
         setHasOptionsMenu(true)
         binding.completeButton.setOnClickListener {
             viewModel.completeAssignment()
-            viewModel.removeAssignments()
             rootView.findNavController().navigateUp()
         }
         binding.returnButton5.setOnClickListener {
