@@ -35,22 +35,24 @@ class CreateFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentCreateBinding.inflate(inflater, container, false)
         val rootView = binding.root
-//        viewModel.currentDate= Calendar.getInstance().getTime()
         setHasOptionsMenu(true)
         binding.datePicker.setVisibility(View.INVISIBLE)
         binding.returnButton3.setOnClickListener {
-            if(binding.nameText.text.toString().length == 0 || binding.dateText.text.toString().length == 0 || binding.descText.text.toString().length == 0
-                || binding.subjectText.text.toString().length == 0 || binding.pointsText.text.toString().length == 0
-                || binding.completeTimeText.text.toString().length == 0){
-//                MaterialAlertDialogBuilder()
-//                    .setTitle("Confirmation")
-//                    .setPositiveButton("Confirm") { dialog, which ->
-//                        rootView.findNavController().navigateUp()
-//                    }
-//                    .setNegativeButton("Dismiss") { dialog, which ->
-//                        // Do something for button click
-//                    }
-//                    .show()
+            if(binding.nameText.text.toString().length > 0 || binding.dateText.text.toString().length > 0 || binding.descText.text.toString().length > 0
+                || binding.subjectText.text.toString().length > 0 || binding.pointsText.text.toString().length > 0
+                || binding.completeTimeText.text.toString().length > 0){
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle("Confirmation")
+                    .setMessage("Do you wish to return to the previous screen(all information will be lost)")
+                    .setPositiveButton("Confirm") { dialog, which ->
+                        rootView.findNavController().navigateUp()
+                    }
+                    .setNegativeButton("Dismiss") { dialog, which ->
+                    }
+                    .show()
+            }
+            else {
+                rootView.findNavController().navigateUp()
             }
 
         }

@@ -1,5 +1,6 @@
 package com.example.homeworkplanner
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -15,6 +16,8 @@ class AssignmentDetailsFragment : Fragment() {
     private var _binding: FragmentAssignmentDetailsBinding? = null
     private val binding get() = _binding!!
     lateinit var dbRef: DatabaseReference
+    lateinit var myMediaPlayer: MediaPlayer
+
     private val viewModel: PlanningViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,9 +26,12 @@ class AssignmentDetailsFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentAssignmentDetailsBinding.inflate(inflater, container, false)
         val rootView = binding.root
+
         setHasOptionsMenu(true)
         binding.completeButton.setOnClickListener {
             viewModel.completeAssignment()
+//            myMediaPlayer = MediaPlayer.create(context, R.raw.endgame)
+//            myMediaPlayer.start()
             rootView.findNavController().navigateUp()
         }
         binding.returnButton5.setOnClickListener {
@@ -46,6 +52,10 @@ class AssignmentDetailsFragment : Fragment() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController()) || super.onOptionsItemSelected(item)
+    }
+    override fun onStop() {
+        super.onStop()
+        myMediaPlayer.release()
     }
 
 }

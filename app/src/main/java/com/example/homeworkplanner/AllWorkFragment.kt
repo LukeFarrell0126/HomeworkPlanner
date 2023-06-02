@@ -27,7 +27,7 @@ class AllWorkFragment : Fragment() {
         val rootView = binding.root
         setHasOptionsMenu(true)
         val assignments= viewModel.list
-        viewModel.isCompleted.observe(viewLifecycleOwner){true
+        viewModel.isCompleted.observe(viewLifecycleOwner){isCompleted->
         viewModel.removeAssignments()
 //            viewModel.index=viewModel.list.size-1 //makes adding index correct
             viewModel.updateIndex()
