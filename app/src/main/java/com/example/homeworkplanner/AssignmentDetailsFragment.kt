@@ -43,7 +43,8 @@ val args = AssignmentDetailsFragmentArgs.fromBundle(requireArguments())
         }
         val current = viewModel.list.get(index) //bounds issue
         binding.detailTimeText.text=(current.time).toString() + " hours"
-        binding.detailNameText.text = current.name
+        binding.detailNameText.text = index.toString()
+//            current.name
         binding.detailTypeText.text = current.type
         binding.detailDateText.text = current.date
         binding.detailDescText.text = current.desc

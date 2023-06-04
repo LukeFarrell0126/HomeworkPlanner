@@ -73,6 +73,7 @@ class CreateFragment : Fragment() {
                     "You have created a NEW assignment!!",
                     Snackbar.LENGTH_SHORT
                 ).show()
+                viewModel.index
                 viewModel.addAssignment(
                     args.typeArg,
                     binding.nameText.text.toString(),

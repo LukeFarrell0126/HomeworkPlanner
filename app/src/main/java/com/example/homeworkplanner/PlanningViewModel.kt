@@ -32,13 +32,15 @@ class PlanningViewModel : ViewModel() {
         type: String, name: String, date: String, desc: String, subject: String,
         points: Int, time: Double
     ) {
-        list.add(Assignment(type, name, date, desc, subject, points, time, false, index))
-        index++
+
+        list.add(Assignment(type, name, date, desc, subject, points, time, false, _index))
+        _index++
+
     }
 
     fun removeAssignment(index:Int) {
         list.removeAt(index)
-//        updateIndex()
+        updateIndex()
     }
 
 
@@ -54,12 +56,12 @@ class PlanningViewModel : ViewModel() {
         list.get(index ?: 0).completed = true
         updateIndex()
     }
-    fun updateIndex() { //update iu
+    fun updateIndex() {
         var n = 0
         for (work in list) {
             work.index = n
             n++
         }
-        index = list.size
+        _index = list.size
     }
 }
