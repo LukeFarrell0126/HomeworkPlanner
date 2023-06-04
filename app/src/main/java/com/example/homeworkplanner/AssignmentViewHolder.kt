@@ -13,7 +13,7 @@ class AssignmentViewHolder(val binding: ListItemLayoutBinding) :
     fun bindAssignment(assignment: Assignment) {
         currentAssignment = assignment
         binding.dueDateText.text = currentAssignment.date
-        binding.typeText.text = currentAssignment.index.toString()
+        binding.typeText.text = currentAssignment.type
     }
     init {
         binding.root.setOnClickListener {

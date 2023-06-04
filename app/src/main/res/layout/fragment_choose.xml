@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Return"
-        android:textSize="35sp"
+        android:textSize="45sp"
         android:textStyle="bold"
         app:backgroundTint="@color/gold"
         app:fontFamily="@font/adamina"
