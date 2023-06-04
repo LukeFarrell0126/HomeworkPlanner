@@ -3,74 +3,63 @@ package com.example.homeworkplanner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
-class PlanningViewModel: ViewModel() {
-    var list = mutableListOf(
-       Assignment("Essay", "Research", "March 1st", "final paper", "English", 100,
-           2.0, true, 0)
+class PlanningViewModel : ViewModel() {
+    var list = mutableListOf<Assignment>(
+        Assignment(
+            "Essay", "Research", "March 1st", "final paper", "English", 100,
+            2.0, false, 0
+        )
     )
-    private var _index = 0
-    var index: Int =0 //loop index
+    private var _index = 1 //change back once test case is removed
+    var index: Int = 1
         get() = _index
 
     val name: String
         get() = list.get(index ?: 0).name
 
-    val date: String
-        get() = list.get(index ?: 0).date
-
-    val desc: String
-        get() = list.get(index ?: 0).desc
-
-    val subject: String
-        get() = list.get(index ?: 0).subject
-
-    val points: Int
-        get() = list.get(index ?: 0).points
-
-    val time: Double
-        get() = list.get(index ?: 0).time
-
     private val _isCompleted = MutableLiveData(false)
     val isCompleted: LiveData<Boolean>
         get() = _isCompleted //observe this property
 
-    private var _workType = ""
-    var workType: String = ""
-        get() = list.get(index?: 0).type //observe this property
 
     val numOfAssignments: Int
         get() = list.size
 
-    fun addAssignment(type: String, name: String, date: String, desc: String, subject: String,
-                      points: Int, time: Double){
-        list.add(Assignment(type,name,date,desc,subject,points,time, false, index))
+    fun addAssignment(
+        type: String, name: String, date: String, desc: String, subject: String,
+        points: Int, time: Double
+    ) {
+        list.add(Assignment(type, name, date, desc, subject, points, time, false, index))
         index++
     }
-    fun removeAssignments(){
-        for(work in list)
-            if(work.completed)
-                list.remove(work)
+
+    fun removeAssignment(index:Int) {
+        list.removeAt(index)
+//        updateIndex()
     }
-    fun checkLate(){
-        //call in viewholder to set the status text view
-        //get current date to set late, due today, not yet due
-    }
-    fun totalTime(): Double{
+
+
+    fun totalTime(): Double {
         var total = 0.0
-        for(work in list){
-            total+=(work.time)
+        for (work in list) {
+            total += (work.time)
         }
         return total
     }
-    fun completeAssignment(){
-        list.get(index?: 0).completed=true
+
+    fun completeAssignment(index: Int) {
+        list.get(index ?: 0).completed = true
+        updateIndex()
     }
-    fun updateIndex(){
-        var n=0
-        for(work in list){
-            work.index=n
+    fun updateIndex() { //update iu
+        var n = 0
+        for (work in list) {
+            work.index = n
             n++
         }
+        index = list.size
     }
 }

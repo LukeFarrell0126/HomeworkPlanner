@@ -25,14 +25,13 @@ class AllWorkFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentAllWorkBinding.inflate(inflater, container, false)
         val rootView = binding.root
+        if (viewModel.numOfAssignments == 1) {
+            binding.textView4.text = "You have ${viewModel.numOfAssignments} total assignment"
+        } else
+            binding.textView4.text = "You have ${viewModel.numOfAssignments} total assignments"
         setHasOptionsMenu(true)
-        val assignments= viewModel.list
-        viewModel.isCompleted.observe(viewLifecycleOwner){isCompleted->
-        viewModel.removeAssignments()
-//            viewModel.index=viewModel.list.size-1 //makes adding index correct
-            viewModel.updateIndex()
-            binding.textView4.text="${viewModel.index}"
-}
+        val assignments = viewModel.list
+
         val mAdapter = AssignmentAdapter(assignments)
         binding.recyclerView.adapter = mAdapter
         binding.returnButton4.setOnClickListener {
@@ -40,12 +39,17 @@ class AllWorkFragment : Fragment() {
         }
         return rootView
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.options_menu, menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController()) || super.onOptionsItemSelected(item)
+        return NavigationUI.onNavDestinationSelected(
+            item,
+            requireView().findNavController()
+        ) || super.onOptionsItemSelected(item)
     }
 
 

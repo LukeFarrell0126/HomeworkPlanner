@@ -70,6 +70,9 @@
         <action
             android:id="@+id/action_createFragment_to_aboutFragment2"
             app:destination="@id/aboutFragment" />
+        <argument
+            android:name="typeArg"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/assignmentDetailsFragment"
@@ -79,6 +82,9 @@
         <action
             android:id="@+id/action_assignmentDetailsFragment_to_aboutFragment2"
             app:destination="@id/aboutFragment" />
+        <argument
+            android:name="indexArg"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

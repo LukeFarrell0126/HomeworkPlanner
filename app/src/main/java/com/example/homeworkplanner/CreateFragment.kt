@@ -35,6 +35,7 @@ class CreateFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentCreateBinding.inflate(inflater, container, false)
         val rootView = binding.root
+        val args = CreateFragmentArgs.fromBundle(requireArguments())
         setHasOptionsMenu(true)
         binding.datePicker.setVisibility(View.INVISIBLE)
         binding.returnButton3.setOnClickListener {
@@ -73,7 +74,7 @@ class CreateFragment : Fragment() {
                     Snackbar.LENGTH_SHORT
                 ).show()
                 viewModel.addAssignment(
-                    "",
+                    args.typeArg,
                     binding.nameText.text.toString(),
                     binding.dateText.text.toString(),
                     binding.descText.text.toString(),

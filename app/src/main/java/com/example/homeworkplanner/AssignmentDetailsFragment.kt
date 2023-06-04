@@ -1,5 +1,6 @@
 package com.example.homeworkplanner
 
+import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.*
@@ -11,6 +12,7 @@ import com.example.homeworkplanner.databinding.FragmentAssignmentDetailsBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 class AssignmentDetailsFragment : Fragment() {
     private var _binding: FragmentAssignmentDetailsBinding? = null
@@ -26,23 +28,27 @@ class AssignmentDetailsFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentAssignmentDetailsBinding.inflate(inflater, container, false)
         val rootView = binding.root
-
+val args = AssignmentDetailsFragmentArgs.fromBundle(requireArguments())
+        val index = args.indexArg
+        myMediaPlayer = MediaPlayer.create(context, R.raw.sound)
         setHasOptionsMenu(true)
         binding.completeButton.setOnClickListener {
-            viewModel.completeAssignment()
-//            myMediaPlayer = MediaPlayer.create(context, R.raw.endgame)
-//            myMediaPlayer.start()
+            viewModel.completeAssignment(index)
+            myMediaPlayer.start()
+            viewModel.removeAssignment(index)
             rootView.findNavController().navigateUp()
         }
         binding.returnButton5.setOnClickListener {
             rootView.findNavController().navigateUp()
         }
-        binding.detailTypeText.text = viewModel.workType
-        binding.detailDateText.text = viewModel.date
-        binding.detailDescText.text = viewModel.desc
-        binding.detailClassText.text = viewModel.subject
-        binding.detailPointText.text = viewModel.points.toString() + "pts"
-        binding.detailNameText.text = viewModel.name
+        val current = viewModel.list.get(index) //bounds issue
+        binding.detailTimeText.text=(current.time).toString() + " hours"
+        binding.detailNameText.text = current.name
+        binding.detailTypeText.text = current.type
+        binding.detailDateText.text = current.date
+        binding.detailDescText.text = current.desc
+        binding.detailClassText.text = current.subject
+        binding.detailPointText.text = current.points.toString() + "pts"
 
         return rootView
     }

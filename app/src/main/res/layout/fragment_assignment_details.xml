@@ -20,9 +20,30 @@
         android:textColor="@color/grey"
         android:textSize="25sp"
         android:textStyle="bold"
-
         app:layout_constraintBaseline_toBaselineOf="@+id/detailTypeText"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/detailTimeText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time:"
+        android:textColor="@color/grey"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/detailTimeText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/detailTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/detailTimeText2"
+        app:layout_constraintTop_toBottomOf="@+id/detailNameText" />
 
     <Button
         android:id="@+id/returnButton5"
@@ -120,7 +141,7 @@
         android:textColor="@color/white"
         android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/detailClassText2"
-        app:layout_constraintTop_toBottomOf="@+id/detailNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/detailTimeText" />
 
     <TextView
         android:id="@+id/detailClassText2"

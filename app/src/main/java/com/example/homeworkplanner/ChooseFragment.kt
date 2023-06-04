@@ -25,42 +25,35 @@ class ChooseFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentChooseBinding.inflate(inflater, container, false)
         val rootView = binding.root
-setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
         binding.returnButton2.setOnClickListener {
             rootView.findNavController().navigateUp()
         }
-        binding.essayImage.setOnClickListener{
-            viewModel.workType = "Essay"
-        }
-        binding.projectImage.setOnClickListener{
-            viewModel.workType = "Project"
-        }
-        binding.homeworkImage.setOnClickListener{
-            viewModel.workType = "Homework"
-        }
-        binding.essayImage.setOnClickListener{
-            viewModel.workType="Essay"
-            val action =ChooseFragmentDirections.actionChooseFragmentToCreateFragment()
+        binding.essayImage.setOnClickListener {
+            val action = ChooseFragmentDirections.actionChooseFragmentToCreateFragment("Essay")
             rootView.findNavController().navigate(action)
         }
-        binding.projectImage.setOnClickListener{
-            viewModel.workType="Project"
-            val action =ChooseFragmentDirections.actionChooseFragmentToCreateFragment()
+        binding.projectImage.setOnClickListener {
+            val action = ChooseFragmentDirections.actionChooseFragmentToCreateFragment("Project")
             rootView.findNavController().navigate(action)
         }
-        binding.homeworkImage.setOnClickListener{
-            viewModel.workType="Homework"
-            val action =ChooseFragmentDirections.actionChooseFragmentToCreateFragment()
+        binding.homeworkImage.setOnClickListener {
+            val action = ChooseFragmentDirections.actionChooseFragmentToCreateFragment("Homework")
             rootView.findNavController().navigate(action)
         }
         return rootView
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.options_menu, menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController()) || super.onOptionsItemSelected(item)
+        return NavigationUI.onNavDestinationSelected(
+            item,
+            requireView().findNavController()
+        ) || super.onOptionsItemSelected(item)
     }
 
 }

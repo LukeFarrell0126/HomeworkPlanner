@@ -15,13 +15,10 @@ class AssignmentViewHolder(val binding: ListItemLayoutBinding) :
         binding.dueDateText.text = currentAssignment.date
         binding.typeText.text = currentAssignment.type
     }
-
     init {
         binding.root.setOnClickListener {
-            binding.root.findNavController()
-                .navigate(R.id.action_allWorkFragment_to_assignmentDetailsFragment)
-            //remove it from recylcer view when returning
-            // only nagvigate when assignment isn't complete
+            val action = AllWorkFragmentDirections.actionAllWorkFragmentToAssignmentDetailsFragment(currentAssignment.index)
+            binding.root.findNavController().navigate(action)
         }
     }
 
