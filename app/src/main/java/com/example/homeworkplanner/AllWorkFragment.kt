@@ -35,7 +35,7 @@ class AllWorkFragment : Fragment() {
         setHasOptionsMenu(true)
         val assignments = viewModel.list
         viewModel.isCompleted.observe(viewLifecycleOwner) {
-//            myMediaPlayer.start()
+            myMediaPlayer.start()
         }
         val mAdapter = AssignmentAdapter(assignments)
         binding.recyclerView.adapter = mAdapter
