@@ -1,5 +1,6 @@
 package com.example.homeworkplanner
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -18,6 +19,7 @@ class AllWorkFragment : Fragment() {
     private var _binding: FragmentAllWorkBinding? = null
     private val binding get() = _binding!!
     private val viewModel: PlanningViewModel by activityViewModels()
+    lateinit var myMediaPlayer: MediaPlayer
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,13 +27,16 @@ class AllWorkFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentAllWorkBinding.inflate(inflater, container, false)
         val rootView = binding.root
+        myMediaPlayer = MediaPlayer.create(context, R.raw.sound)
         if (viewModel.numOfAssignments == 1) {
             binding.textView4.text = "You have ${viewModel.numOfAssignments} total assignment"
         } else
             binding.textView4.text = "You have ${viewModel.numOfAssignments} total assignments"
         setHasOptionsMenu(true)
         val assignments = viewModel.list
-
+        viewModel.isCompleted.observe(viewLifecycleOwner) {
+//            myMediaPlayer.start()
+        }
         val mAdapter = AssignmentAdapter(assignments)
         binding.recyclerView.adapter = mAdapter
         binding.returnButton4.setOnClickListener {
@@ -50,6 +55,11 @@ class AllWorkFragment : Fragment() {
             item,
             requireView().findNavController()
         ) || super.onOptionsItemSelected(item)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        myMediaPlayer.release()
     }
 
 

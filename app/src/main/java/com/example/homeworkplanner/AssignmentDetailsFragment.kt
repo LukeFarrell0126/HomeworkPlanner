@@ -31,10 +31,10 @@ class AssignmentDetailsFragment : Fragment() {
 val args = AssignmentDetailsFragmentArgs.fromBundle(requireArguments())
         val index = args.indexArg
         myMediaPlayer = MediaPlayer.create(context, R.raw.sound)
+
         setHasOptionsMenu(true)
         binding.completeButton.setOnClickListener {
             viewModel.completeAssignment(index)
-            myMediaPlayer.start()
             viewModel.removeAssignment(index)
             rootView.findNavController().navigateUp()
         }
@@ -58,6 +58,9 @@ val args = AssignmentDetailsFragmentArgs.fromBundle(requireArguments())
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController()) || super.onOptionsItemSelected(item)
+    }
+    fun play(){
+
     }
     override fun onStop() {
         super.onStop()
