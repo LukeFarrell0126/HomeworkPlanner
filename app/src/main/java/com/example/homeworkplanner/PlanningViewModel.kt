@@ -9,13 +9,10 @@ import java.util.*
 
 class PlanningViewModel : ViewModel() {
     var list = mutableListOf<Assignment>(
-        Assignment(
-            "Essay", "Research", "March 1st", "final paper", "English", 100,
-            2.0, false, 0
-        )
+
     )
-    private var _index = 1 //change back once test case is removed
-    var index: Int = 1
+    private var _index = 0 //change back once test case is removed
+    var index: Int = 0
         get() = _index
 
     val name: String
@@ -43,8 +40,6 @@ class PlanningViewModel : ViewModel() {
         list.removeAt(index)
         updateIndex()
     }
-
-
     fun totalTime(): Double {
         var total = 0.0
         for (work in list) {

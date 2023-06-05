@@ -49,7 +49,6 @@ val args = AssignmentDetailsFragmentArgs.fromBundle(requireArguments())
         binding.detailDescText.text = current.desc
         binding.detailClassText.text = current.subject
         binding.detailPointText.text = current.points.toString() + "pts"
-
         return rootView
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

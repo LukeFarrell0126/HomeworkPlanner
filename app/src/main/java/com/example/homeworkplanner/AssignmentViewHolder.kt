@@ -14,6 +14,7 @@ class AssignmentViewHolder(val binding: ListItemLayoutBinding) :
         currentAssignment = assignment
         binding.dueDateText.text = currentAssignment.date
         binding.typeText.text = currentAssignment.type
+        binding.nameText.text = currentAssignment.name
     }
     init {
         binding.root.setOnClickListener {

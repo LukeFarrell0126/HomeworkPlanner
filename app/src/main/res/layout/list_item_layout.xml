@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/darkGreen"
     android:paddingLeft="20dp"
     android:paddingTop="20dp"
     android:paddingRight="20dp"
-    android:background="@color/darkGreen"
 
     android:paddingBottom="20dp">
 
@@ -25,13 +25,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title:"
+        android:textColor="@color/white"
+
+        android:textSize="25sp"
+        app:fontFamily="@font/amaranth"
+        app:layout_constraintBaseline_toBaselineOf="@+id/nameText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Due Date:"
+        android:textColor="@color/white"
         android:textSize="25sp"
         app:fontFamily="@font/amaranth"
-        android:textColor="@color/white"
 
         app:layout_constraintBaseline_toBaselineOf="@+id/dueDateText"
         app:layout_constraintStart_toStartOf="parent" />
@@ -42,12 +54,25 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:text="TextView"
+        android:textColor="@color/white"
         android:textSize="25sp"
         app:fontFamily="@font/alice"
-        android:textColor="@color/white"
 
         app:layout_constraintBaseline_toBaselineOf="@+id/textView"
         app:layout_constraintStart_toEndOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:fontFamily="@font/alice"
+        app:layout_constraintStart_toEndOf="@+id/textViewName"
+        app:layout_constraintTop_toBottomOf="@+id/typeText" />
 
     <TextView
         android:id="@+id/dueDateText"
@@ -56,11 +81,11 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="TextView"
-        android:textSize="25sp"
-        app:fontFamily="@font/alice"
         android:textColor="@color/white"
+        android:textSize="25sp"
 
+        app:fontFamily="@font/alice"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/typeText" />
+        app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
