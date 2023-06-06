@@ -24,7 +24,7 @@ class AllWorkFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dbRef = Firebase.database.reference //in view model or every fragment
+        //in view model or every fragment
         _binding = FragmentAllWorkBinding.inflate(inflater, container, false)
         val rootView = binding.root
         myMediaPlayer = MediaPlayer.create(context, R.raw.sound)
