@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="15dp"
-        android:text="• The status color will turn red once the due date has passed"
+        android:text="• Added assignments will remain until the COMPLETE button is pressed"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"

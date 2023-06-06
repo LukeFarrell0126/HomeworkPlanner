@@ -1,6 +1,7 @@
 package com.example.homeworkplanner
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -23,8 +24,10 @@ class ActionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         dbRef = Firebase.database.reference //in view model or every fragment
+
         _binding = FragmentActionBinding.inflate(inflater, container, false)
         val rootView = binding.root
+
         setHasOptionsMenu(true)
         binding.addButton.setOnClickListener{
             val action = ActionFragmentDirections.actionActionFragmentToChooseFragment()

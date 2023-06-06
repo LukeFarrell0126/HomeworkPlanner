@@ -25,13 +25,16 @@ class MainFragment : Fragment() {
         dbRef = Firebase.database.reference //in view model or every fragment
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val rootView = binding.root
+        if(viewModel.updated == false) {
+            viewModel.resumeData()
+        }
         var hours = (viewModel.totalTime() / 1).toInt()
         var minutes = ((viewModel.totalTime() % 1) * 60).toInt()
         setHasOptionsMenu(true)
 
         if (viewModel.numOfAssignments == 0 || (minutes == 0 && hours == 0)) {
-            binding.overviewText.text = "You have no ongoing assignments"
-            binding.timeText.text = "You have about no work to complete"
+            binding.overviewText.text = ""
+            binding.timeText.text = ""
         } else if (viewModel.numOfAssignments == 1) {
             binding.overviewText.text = "You have ${viewModel.numOfAssignments} assignment due"
         } else {
